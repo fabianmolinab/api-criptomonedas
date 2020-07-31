@@ -1,10 +1,11 @@
+const cotizador = new API('04b30f4183679015807387bfcddc70a3d17537af66f41936b465ee4a7c26fd86');
+const ui = new Interfaz();
+
 let formularioMoneda = document.getElementById('moneda'),
   formularioCriptoMoneda = document.getElementById('criptomoneda');
 
 //Añadimos el evento
 const formulario = document.getElementById('formulario').addEventListener('submit', validarFormulario);
-
-//Validamos el formulario
 
 function validarFormulario(e) {
   e.preventDefault();
@@ -16,9 +17,16 @@ function validarFormulario(e) {
 
   //Validamos el formulario
 
-  if (monedaSeleccionada !== '' | criptoMonedaSeleccionada !== '') {
-    console.log('no esta vacio');
+  if (monedaSeleccionada !== '' || criptoMonedaSeleccionada !== '') {
+
+    
   } else {
-    console.log('esta vacio');
+
+    // Arroja alerta
+    ui.mostrarMensaje('Ambos campos son obligatorios', 'alert bg-danger text-center');
+    
+    setTimeout(() => {
+      document.querySelector('.mensajes div').remove();
+    }, 4000);
   }
 }
