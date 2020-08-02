@@ -33,4 +33,21 @@ class Interfaz {
     const divMensaje = document.querySelector('.mensajes');
     divMensaje.appendChild(div);
   }
+
+  mostrarResultado(resultado, moneda, crypto) {
+    const datosMoneda = resultado[crypto][moneda];
+
+    //Insertamos el resultado
+    let templateHTML = `
+      <div class="card bg-warning">
+        <div class="card-body text-light">
+          <h2 class="card-title">Resultado:</h2>
+          <p>El precio de ${datosMoneda.FROMSYMBOL} a moneda ${datosMoneda.TOSYMBOL} es de: ${datosMoneda.PRICE}
+          </p>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('resultado').innerHTML = templateHTML;
+  }
 }

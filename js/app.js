@@ -21,14 +21,23 @@ function validarFormulario(e) {
 
     cotizador.obtenerValores(monedaSeleccionada, criptoMonedaSeleccionada)
       .then(data => {
-        console.log(data);
+
+        ui.mostrarResultado(data.RAW, monedaSeleccionada, criptoMonedaSeleccionada);
       })
+      .catch((error) => {
+
+        ui.mostrarMensaje(error, 'alert bg-danger text-center');
+        setTimeout(() => {
+          document.querySelector('.mensajes div').remove();
+        }, 4000);
+      })
+
 
   } else {
 
     // Arroja alerta
     ui.mostrarMensaje('Ambos campos son obligatorios', 'alert bg-danger text-center');
-    
+
     setTimeout(() => {
       document.querySelector('.mensajes div').remove();
     }, 4000);
