@@ -37,12 +37,14 @@ class Interfaz {
   mostrarResultado(resultado, moneda, crypto) {
     const datosMoneda = resultado[crypto][moneda];
 
+    let precioRecortado = datosMoneda.PRICE.toFixed(2);
+
     //Insertamos el resultado
     let templateHTML = `
       <div class="card bg-warning">
         <div class="card-body text-light">
           <h2 class="card-title">Resultado:</h2>
-          <p>El precio de ${datosMoneda.FROMSYMBOL} a moneda ${datosMoneda.TOSYMBOL} es de: ${datosMoneda.PRICE}
+          <p>El precio de ${datosMoneda.FROMSYMBOL} a moneda ${datosMoneda.TOSYMBOL} es de: ${precioRecortado}
           </p>
         </div>
       </div>
