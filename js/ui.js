@@ -11,8 +11,16 @@ class Interfaz {
     cotizador.obtenerMonedasAPI()
       .then(monedas => {
 
+        // Se crea el select de las opciones del formulario
+        const select = document.getElementById('criptomoneda');
+        
+        //Llama los resultados de la api para agregarlos al formulario
         for (const [key, value] of Object.entries(monedas.monedas.Data)) {
-          console.log(value);
+          
+          const opcion = document.createElement('option');
+          opcion.value = value.Symbol;
+          opcion.appendChild(document.createTextNode(value.CoinName));
+          select.appendChild(opcion);
         }
       })
   }
@@ -24,6 +32,5 @@ class Interfaz {
 
     const divMensaje = document.querySelector('.mensajes');
     divMensaje.appendChild(div);
-
   }
 }

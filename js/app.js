@@ -17,9 +17,13 @@ function validarFormulario(e) {
 
   //Validamos el formulario
 
-  if (monedaSeleccionada !== '' || criptoMonedaSeleccionada !== '') {
+  if (monedaSeleccionada !== '' && criptoMonedaSeleccionada !== '') {
 
-    
+    cotizador.obtenerValores(monedaSeleccionada, criptoMonedaSeleccionada)
+      .then(data => {
+        console.log(data);
+      })
+
   } else {
 
     // Arroja alerta
